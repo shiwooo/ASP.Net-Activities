@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "StudentAccountingSytem";
+}
+
+<h2>Student Accounting System</h2>
+
+ID Number:
+<br />
+<input type="number" id="idnumber" />
+<br />
+Lastname:
+<br />
+<input type="text" id="lastname" />
+<br />
+Firstname:
+<br />
+<input type="text" id="firstname" />
+<br />
+<br />
+<select id="gender">
+    <option selected disabled>Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="LGBTQ+">LGBTQ+</option>
+</select>
+<select id="coursecode">
+    <option selected disabled>Select Course Code</option>
+    <option value="0001">0001</option>
+    <option value="0002">0002</option>
+    <option value="0003">0003</option>
+    <option value="0004">0004</option>
+    <option value="0005">0005</option>
+    <option value="0006">0006</option>
+    <option value="0007">0007</option>
+    <option value="0008">0008</option>
+</select>
+<select id="yearlevel">
+    <option selected disabled>Select Year Level</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+<br />
+<br />
+Number of Subjects:
+<br />
+<input type="number" id="subjectcount" />
+<br />
+<br />
+<br />
+<input type="button" id="btnclck" value="Confirm" />
+<br />
+<br />
+
+<style>
+    /* Select all cells with an id attribute */
+    td[id], th[id] {
+        text-align: right;
+    }
+    .desc-head{
+        text-align: center;
+    }
+    table td {
+        width: 14rem;
+        height: 2rem;
+    }
+</style>
+
+<table border="1" style="text-align:left">
+    <tr>
+        <th>ID number</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Gender Identity</th>
+    </tr>
+    <tr>
+        <td class="id-number"></td>
+        <td class="last-name"></td>
+        <td class="first-name"></td>
+        <td class="gender-identity"></td>
+    </tr>
+    <tr>
+        <th>Year Level</th>
+        <th>Course Code</th>
+        <th>Course</th>
+        <th>Units</th>
+    </tr>
+    <tr>
+        <td class="year-level"></td>
+        <td class="crs-code"></td>
+        <td class="crs"></td>
+        <td class="unit"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th class="desc-head">FEE</th>
+        <th class="desc-head">AMOUNT</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Registration Fee</td>
+        <td id="registration-fee"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Miscellaneous Fee</td>
+        <td id="misc-fee"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Laboratory Fee</td>
+        <td id="lab-fee"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Tuition Fee</td>
+        <td id="total-tuition"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th class="desc-head">INSTALLMENT PAY</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>PRELIM</td>
+        <td id="prelim-payment"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>MIDTERM</td>
+        <td id="midterm-payment"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>SEMIFINAL</td>
+        <td id="semifinal-payment"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>FINAL</td>
+        <td id="final-payment"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th>Total Fee</th>
+        <td id="total-fee"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th>Mode of Payment</th>
+        <td id="mode-of-payment"></td>
+    </tr>
+</table>
+
+
+<script src="~/Scripts/jquerylatest/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/myscripts/studentAccountingSystem.js"></script>
