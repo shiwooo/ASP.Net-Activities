@@ -298,7 +298,8 @@ namespace Web_Application_Activity.Controllers
             else
             {
                 switch (hundreths)
-                {   
+                {
+                    case 0: number_to_phrase += " cents."; break;
                     case 1:
                     {
                         if (tenths == 0)
