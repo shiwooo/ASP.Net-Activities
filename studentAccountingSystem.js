@@ -7,8 +7,13 @@
         var courseCode = $("#coursecode").val();
         var yearLevel = $("#yearlevel").val();
         var subjectCount = parseInt($("#subjectcount").val());
+        
 
-        if (!IDNumber || !lastName || !firstName || !gender || !courseCode || !yearLevel || !subjectCount) {
+
+
+       /* !IDNumber || !lastName || !firstName || !gender !yearLevel ||*/
+
+        if (!courseCode || !subjectCount) {
             alert("Please enter all required fields.");
             return;
         }
@@ -34,7 +39,7 @@
             $(".crs").text(data[0].course_name);
             $(".unit").text(data[0].total_unit);
             //$("#tuition-per-unit").text(data[0].tuition_fee);
-            $("#registration-fee").text(data[0].registration_fee);
+            $("#registration-fee").text(data[0].registration_fee.toFixed(2));
             $("#misc-fee").text(data[0].miscellaneous_fee);
             $("#lab-fee").text(data[0].laboratory_fee);
             $("#total-tuition").text(data[0].total_tuition_fee.toFixed(2));
@@ -45,6 +50,29 @@
             $("#final-payment").text(data[0].final_payment.toFixed(2));
             $("#mode-of-payment").text(data[0].mode_of_payment);
 
+        });
+    });
+
+     $("#btnclck-2").click(function () {
+         var amountTendered = parseInt($("#amount-tendered").val());
+         var prelimAssessment = parseFloat($("#prelim-payment").val());
+         var midtermAssessment = parseFloat($("#midterm-payment").val());
+         var semifinalAssessment = parseFloat($("#semifinal-payment").val());
+         var finalAssessment = parseFloat($("#final-payment").val());
+         var assessmentChoice = parseInt($('input[name="assessment"]:checked').val());
+
+         alert(assessmentChoice);
+
+
+        $.post('../Home/Assessment', {
+            amtTendered: amountTendered,
+            prelimAss: prelimAssessment,
+            midtermAss: midtermAssessment,
+            semifinalAss: semifinalAssessment,
+            finalAss: finalAssessment,
+            assChoice: assessmentChoice
+        }, function (data) {
+            $("#final-amount-tendered").text(data[0].amount_tendered);
         });
     });
 });
