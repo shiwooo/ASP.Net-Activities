@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
     $("#btnclck").click(function () {
         var IDNumber = $("#idnumber").val();
         var lastName = $("#lastname").val();
@@ -7,11 +7,11 @@
         var courseCode = $("#coursecode").val();
         var yearLevel = $("#yearlevel").val();
         var subjectCount = parseInt($("#subjectcount").val());
-        
 
 
 
-       /* !IDNumber || !lastName || !firstName || !gender !yearLevel ||*/
+
+        /* !IDNumber || !lastName || !firstName || !gender !yearLevel ||*/
 
         if (!courseCode || !subjectCount) {
             alert("Please enter all required fields.");
@@ -38,7 +38,6 @@
             $(".crs-code").text(courseCode);
             $(".crs").text(data[0].course_name);
             $(".unit").text(data[0].total_unit);
-            //$("#tuition-per-unit").text(data[0].tuition_fee);
             $("#registration-fee").text(data[0].registration_fee.toFixed(2));
             $("#misc-fee").text(data[0].miscellaneous_fee);
             $("#lab-fee").text(data[0].laboratory_fee);
@@ -53,26 +52,25 @@
         });
     });
 
-     $("#btnclck-2").click(function () {
-         var amountTendered = parseInt($("#amount-tendered").val());
-         var prelimAssessment = parseFloat($("#prelim-payment").val());
-         var midtermAssessment = parseFloat($("#midterm-payment").val());
-         var semifinalAssessment = parseFloat($("#semifinal-payment").val());
-         var finalAssessment = parseFloat($("#final-payment").val());
-         var assessmentChoice = parseInt($('input[name="assessment"]:checked').val());
-
-         alert(assessmentChoice);
-
+    $("#btnclck-2").click(function () {
+        var amountTendered = parseInt($("#amount-tendered").val());
+        var prelimAssessment = $("#prelim-payment").text();
+        var midtermAssessment = $("#midterm-payment").text();
+        var semifinalAssessment = $("#semifinal-payment").text();
+        var finalAssessment = $("#final-payment").text();
+        var assessmentChoice = parseInt($('input[name="assessment"]:checked').val());
 
         $.post('../Home/Assessment', {
             amtTendered: amountTendered,
-            prelimAss: prelimAssessment,
-            midtermAss: midtermAssessment,
-            semifinalAss: semifinalAssessment,
-            finalAss: finalAssessment,
-            assChoice: assessmentChoice
+            prelimAssess: prelimAssessment,
+            midtermAssess: midtermAssessment,
+            semifinalAssess: semifinalAssessment,
+            finalAssess: finalAssessment,
+            assessChoice: assessmentChoice
         }, function (data) {
             $("#final-amount-tendered").text(data[0].amount_tendered);
+            $("#change-amount").text(data[0].change.toFixed(2));
+            $("#number-to-phrase").text(data[0].phrase);
         });
     });
 });
