@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Web_Application_Activities.Controllers
+namespace Web_Application_Activity.Controllers
 {
     public class HomeController : Controller
     {
@@ -34,13 +34,12 @@ namespace Web_Application_Activities.Controllers
         }
         public ActionResult StudentEntry()
         {
-            var data = new List<object>();
+            var student_data = new List<object>();
 
             var course_code = Request["crsCode"];
-            var subject = Request["subjCount"];
-            int subj_count = Convert.ToInt32(subject);
-            int unit_sum = subj_count * 3;
-            
+            int subject = Convert.ToInt32(Request["subjCount"]);
+            int unit_sum = subject * 3;
+
             double tuition_per_unit = 0;
             double reg_fee = 0;
             double misc_fee = 0;
@@ -121,7 +120,7 @@ namespace Web_Application_Activities.Controllers
             double final = overall_fee - (prelim + midterm + semi_final);
             var mop = (overall_fee >= 8000) ? "Cash" : (overall_fee >= 5000) ? "Check" : "Credit";
 
-            data.Add(new
+            student_data.Add(new
             {
                 course_name = course,
                 tuition_fee = tuition_per_unit,
@@ -137,7 +136,31 @@ namespace Web_Application_Activities.Controllers
                 mode_of_payment = mop,
                 total_unit = unit_sum
             });
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(student_data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Assessment()
+        {
+            var assessment_data = new List<object>();
+            double amt_tndrd = Convert.ToDouble(Request["amtTendered"]);
+            double amt_tendered = amt_tndrd / 100;
+
+            double pre_assessment = Convert.ToDouble(Request["prelimAss"]);
+            double midterm_assessment = Convert.ToDouble(Request["midtermAss"]);
+            double semifinal_assessment = Convert.ToDouble(Request["semifinalAss"]);
+            double final_assessment = Convert.ToDouble(Request["finalAss"]);
+            int ass_choice = Convert.ToInt32(Request["assChoice"]);
+
+            switch (ass_choice)
+            {
+                case 1:
+                    break;
+            }
+
+            assessment_data.Add(new
+            {
+                amount_tendered = amt_tendered
+            });
+            return Json(assessment_data, JsonRequestBehavior.AllowGet);
         }
     }
 }
