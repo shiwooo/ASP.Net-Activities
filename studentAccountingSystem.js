@@ -7,22 +7,19 @@ $(document).ready(function () {
         var courseCode = $("#coursecode").val();
         var yearLevel = $("#yearlevel").val();
         var subjectCount = parseInt($("#subjectcount").val());
-
-
-
-
-        /* !IDNumber || !lastName || !firstName || !gender !yearLevel ||*/
-
+        var modeOfPayment = $("#modeofpayment").val();
+        
+      /*  !IDNumber || !lastName || !firstName || !gender || !yearLevel ||*/
         if (!courseCode || !subjectCount) {
             alert("Please enter all required fields.");
-            return;
+            return
         }
         if (subjectCount <= 0) {
-            alert("NUMBER OF SUBJECTS DOES NOT MEET THE MINIMUM REQUIREMENT!!!")
+            alert("NUMBER OF SUBJECTS DOES NOT MEET THE MINIMUM REQUIREMENT!!!");
             return
         }
         if (subjectCount > 10) {
-            alert("NUMBER OF SUBJECTS EXCEEDED THE MINIMUM REQUIREMENT!!!")
+            alert("NUMBER OF SUBJECTS EXCEEDED THE MINIMUM REQUIREMENT!!!");
             return
         }
 
@@ -47,7 +44,7 @@ $(document).ready(function () {
             $("#midterm-payment").text(data[0].midterm_payment.toFixed(2));
             $("#semifinal-payment").text(data[0].semi_final_payment.toFixed(2));
             $("#final-payment").text(data[0].final_payment.toFixed(2));
-            $("#mode-of-payment").text(data[0].mode_of_payment);
+            $("#mode-of-payment").text(modeOfPayment);
 
         });
     });
@@ -59,6 +56,11 @@ $(document).ready(function () {
         var semifinalAssessment = $("#semifinal-payment").text();
         var finalAssessment = $("#final-payment").text();
         var assessmentChoice = parseInt($('input[name="assessment"]:checked').val());
+
+        if (!amountTendered) {
+            alert("Please enter an amount.")
+            return;
+        }
 
         $.post('../Home/Assessment', {
             amtTendered: amountTendered,
