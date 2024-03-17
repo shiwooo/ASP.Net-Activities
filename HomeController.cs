@@ -35,16 +35,15 @@ namespace Web_Application_Activity.Controllers
         public ActionResult StudentEntry()
         {
             var student_data = new List<object>();
-
             var course_code = Request["crsCode"];
             int subject = Convert.ToInt32(Request["subjCount"]);
             int unit_sum = subject * 3;
-
             double tuition_per_unit = 0;
             double reg_fee = 0;
             double misc_fee = 0;
             double lab_fee = 0;
             var course = "";
+
             switch (course_code)
             {
                 case "0001":
@@ -114,10 +113,15 @@ namespace Web_Application_Activity.Controllers
             double total_tuition = unit_sum * tuition_per_unit;
             double overall_fee = total_tuition + reg_fee + misc_fee + lab_fee;
             double prelim = overall_fee * .53;
-            double midterm = overall_fee * .64 - prelim;
+            double midterm = overall_fee * .64;
+            double semi_final = overall_fee * .75;
+            double final = overall_fee;
+
+            /*ALTERNATIVE FORMULA IF LAHI ANG PASABOT*/
+            /*double midterm = overall_fee * .64 - prelim;
             double semi_final = (overall_fee * .75) - (midterm + prelim);
-            double final = overall_fee - (prelim + midterm + semi_final);
-            var mop = (overall_fee >= 8000) ? "Cash" : (overall_fee >= 5000) ? "Check" : "Credit";
+            double final = overall_fee - (prelim + midterm + semi_final);*/
+
             student_data.Add(new
             {
                 course_name = course,
@@ -131,7 +135,6 @@ namespace Web_Application_Activity.Controllers
                 midterm_payment = midterm,
                 semi_final_payment = semi_final,
                 final_payment = final,
-                mode_of_payment = mop,
                 total_unit = unit_sum
             });
             return Json(student_data, JsonRequestBehavior.AllowGet);
@@ -193,6 +196,13 @@ namespace Web_Application_Activity.Controllers
                 case 7: number_to_phrase += "Seven thousand "; break;
                 case 8: number_to_phrase += "Eight thousand "; break;
                 case 9: number_to_phrase += "Nine thousand "; break;
+                case 10: number_to_phrase += "Ten thousand "; break;
+                case 11: number_to_phrase += "Eleven thousand "; break;
+                case 12: number_to_phrase += "Twelve thousand "; break;
+                case 13: number_to_phrase += "Thirteen thousand "; break;
+                case 14: number_to_phrase += "Fourteen thousand "; break;
+                case 15: number_to_phrase += "Fifteen thousand "; break;
+                case 16: number_to_phrase += "Sixteen thousand "; break; 
             }
 
             int hundreds = (int)number % 1000 / 100;
@@ -211,12 +221,12 @@ namespace Web_Application_Activity.Controllers
             }
 
             int tens = (int)number % 100 / 10;
-            int teens = (int)number % 10;
+            int ones = (int)number % 10;
             switch (tens)
             {
                 case 1:
-                    {
-                    switch (teens)
+                {
+                    switch (ones)
                     {
                         case 0: number_to_phrase += "ten "; break;
                         case 1: number_to_phrase += "eleven "; break;
@@ -230,7 +240,7 @@ namespace Web_Application_Activity.Controllers
                         case 9: number_to_phrase += "nineteen "; break;
                     }
                     break;
-                    }
+                }
                 case 2: number_to_phrase += "twenty "; break;
                 case 3: number_to_phrase += "thirty "; break;
                 case 4: number_to_phrase += "forty "; break;
@@ -240,10 +250,8 @@ namespace Web_Application_Activity.Controllers
                 case 8: number_to_phrase += "eighty "; break;
                 case 9: number_to_phrase += "ninety "; break;
             }
-            int ones = (int)number % 10;
-            if (tens == 1)
-                number_to_phrase += "";
-            else
+
+            if (tens != 1)
             {
                 switch (ones)
                 {
@@ -256,18 +264,33 @@ namespace Web_Application_Activity.Controllers
                     case 7: number_to_phrase += "seven "; break;
                     case 8: number_to_phrase += "eight "; break;
                     case 9: number_to_phrase += "nine "; break;
-                    default: number_to_phrase += ""; break;
                 }
             }
 
             double decimal_to_whole = number * 100;
             int tenths = (int)decimal_to_whole % 100 / 10;
-            int tenths_teens = (int)decimal_to_whole % 10;
+            int hundreths = (int)decimal_to_whole % 10;
             switch (tenths)
             {
+                case 0:
+                {
+                    switch (hundreths)
+                    {
+                        case 1: number_to_phrase += "and one cent."; break;
+                        case 2: number_to_phrase += "and two cents."; break;
+                        case 3: number_to_phrase += "and three cents."; break;
+                        case 4: number_to_phrase += "and four cents."; break;
+                        case 5: number_to_phrase += "and five cents."; break;
+                        case 6: number_to_phrase += "and six cents."; break;
+                        case 7: number_to_phrase += "and seven cents."; break;
+                        case 8: number_to_phrase += "and eight cents."; break;
+                        case 9: number_to_phrase += "and nine cents."; break;
+                    }
+                    break;
+                }
                 case 1:
                 {
-                    switch (tenths_teens)
+                    switch (hundreths)
                     {
                         case 0: number_to_phrase += "and ten cents."; break;
                         case 1: number_to_phrase += "and eleven cents."; break;
@@ -284,33 +307,22 @@ namespace Web_Application_Activity.Controllers
                 }
                 case 2: number_to_phrase += "and twenty "; break;
                 case 3: number_to_phrase += "and thirty "; break;
-                case 4: number_to_phrase += "and forty "; break;
-                case 5: number_to_phrase += "and fifty "; break;
-                case 6: number_to_phrase += "and sixty "; break;
+                case 4: number_to_phrase += "and forty " ; break;
+                case 5: number_to_phrase += "and fifty " ; break;
+                case 6: number_to_phrase += "and sixty " ; break;
                 case 7: number_to_phrase += "and seventy "; break;
                 case 8: number_to_phrase += "and eighty "; break;
                 case 9: number_to_phrase += "and ninety "; break;
             }
 
-            int hundreths = (int)decimal_to_whole % 10;
-            if (tenths == 1)
+            if (tenths == 0 || tenths == 1)
                 number_to_phrase += "";
             else
             {
                 switch (hundreths)
                 {
-                    case 0: number_to_phrase += " cents."; break;
-                    case 1:
-                    {
-                        if (tenths == 0)
-                        {
-                            number_to_phrase += "and one cents.";
-                        }
-                        else{
-                            number_to_phrase += "one cent.";
-                        }
-                        break;
-                    }    
+                    case 0: number_to_phrase += "cents."; break;
+                    case 1: number_to_phrase += "one cents."; break;
                     case 2: number_to_phrase += "two cents."; break;
                     case 3: number_to_phrase += "three cents."; break;
                     case 4: number_to_phrase += "four cents."; break;
@@ -319,9 +331,9 @@ namespace Web_Application_Activity.Controllers
                     case 7: number_to_phrase += "seven cents."; break;
                     case 8: number_to_phrase += "eight cents."; break;
                     case 9: number_to_phrase += "nine cents."; break;
-                    default: number_to_phrase += ""; break;
                 }
             }
+
             assessment_data.Add(new
             {
                 amount_tendered = amt_tendered,
