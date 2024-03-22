@@ -8,9 +8,8 @@ $(document).ready(function () {
         var yearLevel = $("#yearlevel").val();
         var subjectCount = parseInt($("#subjectcount").val());
         var modeOfPayment = $("#modeofpayment").val();
-        
-      /*  !IDNumber || !lastName || !firstName || !gender || !yearLevel ||*/
-        if (!courseCode || !subjectCount) {
+
+        if (!IDNumber || !lastName || !firstName || !gender || !courseCode || !yearLevel || !subjectCount || !modeOfPayment) {
             alert("Please enter all required fields.");
             return
         }
@@ -19,7 +18,7 @@ $(document).ready(function () {
             return
         }
         if (subjectCount > 10) {
-            alert("NUMBER OF SUBJECTS EXCEEDED THE MINIMUM REQUIREMENT!!!");
+            alert("NUMBER OF SUBJECTS EXCEEDED THE MAXIMUM REQUIREMENT! (1-10)");
             return
         }
 
