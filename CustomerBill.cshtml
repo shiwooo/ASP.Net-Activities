@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "CustomerBill";
+}
+
+<h2>Customer Bill</h2>
+
+How many TVs were sold?
+<input type="number" id="tv" />
+<br />
+How many VCRs were sold?
+<input type="number" id="vcr" />
+<br />
+How many remote controllers were sold?
+<input type="number" id="rc" />
+<br />
+How many CDs were sold?
+<input type="number" id="cd" />
+<br />
+How many tape recorders were sold?
+<input type="number" id="tr" />
+<br />
+<br />
+<input type="button" id="buttonclick" value="SAVE" />
+<br />
+<br />
+<table style="width: 50%;">
+    <tr>
+        <th>QUANTITY</th>
+        <th>DESCRIPTION</th>
+        <th>UNIT PRICE</th>
+        <th>TOTAL PRICE</th>
+    </tr>
+    <tr>
+        <td>- - - - - - - -</td>
+        <td>- - - - - - - - - - -</td>
+        <td>- - - - - - - - - -</td>
+        <td>- - - - - - - - - - - </td>
+    </tr>
+    <tr>
+        <td id="tvqty"></td>
+        <td>TV</td>
+        <td>400.00</td>
+        <td id="tvtotalprice"></td>
+    </tr>
+    <tr>
+        <td id="vcrqty"></td>
+        <td>VCR</td>
+        <td>220.00</td>
+        <td id="vcrtotalprice"></td>
+    </tr>
+    <tr>
+        <td id="rcqty"></td>
+        <td>REMOTE CONTROLLER</td>
+        <td>35.20</td>
+        <td id="rctotalprice"></td>
+    </tr>
+    <tr>
+        <td id="cdqty"></td>
+        <td>CD PLAYER</td>
+        <td>300.00</td>
+        <td id="cdtotalprice"></td>
+    </tr>
+    <tr>
+        <td id="trqty"></td>
+        <td>TAPE RECORDER</td>
+        <td>150.00</td>
+        <td id="trtotalprice"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>- - - - - - - - - - - </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th>SUBTOTAL</th>
+        <td id="subtotalamt"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th>TAX</th>
+        <td id="taxamt"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th>TOTAL</th>
+        <td id="totalamt"></td>
+    </tr>
+</table>
+
+<script src="~/Scripts/jquerylatest/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/myscripts/customerBill.js"></script>
