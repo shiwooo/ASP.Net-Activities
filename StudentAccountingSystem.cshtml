@@ -18,12 +18,16 @@ Firstname:
 <input type="text" id="firstname" />
 <br />
 <br />
+Gender:
 <select id="gender">
     <option selected disabled>Select Gender</option>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
     <option value="LGBTQ+">LGBTQ+</option>
 </select>
+<br />
+<br />
+Course Code:
 <select id="coursecode">
     <option selected disabled>Select Course Code</option>
     <option value="0001">0001</option>
@@ -35,6 +39,9 @@ Firstname:
     <option value="0007">0007</option>
     <option value="0008">0008</option>
 </select>
+<br />
+<br />
+Year level:
 <select id="yearlevel">
     <option selected disabled>Select Year Level</option>
     <option value="1">1</option>
@@ -45,10 +52,22 @@ Firstname:
 <br />
 <br />
 Number of Subjects:
+<select id="subjectcount">
+    <option selected disabled>Select Number of Subjects</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+</select>
 <br />
-<input type="number" id="subjectcount" />
 <br />
-<br />
+Mode of Payment:
 <select id="modeofpayment">
     <option selected disabled>Select Mode of Payment</option>
     <option value="Cash">Cash</option>
@@ -173,7 +192,7 @@ Amount Tendered:
 <input type="number" id="amount-tendered" />
 <input type="button" id="btnclck-2" value="Save" />
 <br />
-Final Amount Tendered: <span id="final-amount-tendered"></span>
+Amount: <span id="final-amount-tendered"></span>
 <br />
 Change: <span id="change-amount"></span>
 <br />
