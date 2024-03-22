@@ -155,32 +155,32 @@ namespace Web_Application_Activity.Controllers
             switch (ass_choice)
             {
                 case 1:
-                {
-                    change_amount = amt_tendered - pre_assessment;
-                    number = pre_assessment;
-                    break;
-                }
+                    {
+                        change_amount = amt_tendered - pre_assessment;
+                        number = pre_assessment;
+                        break;
+                    }
 
                 case 2:
-                {
-                    change_amount = amt_tendered - midterm_assessment;
-                    number = midterm_assessment;
-                    break;
-                }
-                    
+                    {
+                        change_amount = amt_tendered - midterm_assessment;
+                        number = midterm_assessment;
+                        break;
+                    }
+
                 case 3:
-                {
-                    change_amount = amt_tendered - semifinal_assessment;
-                    number = semifinal_assessment;
-                    break;
-                }
- 
+                    {
+                        change_amount = amt_tendered - semifinal_assessment;
+                        number = semifinal_assessment;
+                        break;
+                    }
+
                 case 4:
-                {
-                    change_amount = amt_tendered - final_assessment;
-                    number = final_assessment;
-                    break;
-                }
+                    {
+                        change_amount = amt_tendered - final_assessment;
+                        number = final_assessment;
+                        break;
+                    }
             }
 
             string number_to_phrase = "";
@@ -202,7 +202,7 @@ namespace Web_Application_Activity.Controllers
                 case 13: number_to_phrase += "Thirteen thousand "; break;
                 case 14: number_to_phrase += "Fourteen thousand "; break;
                 case 15: number_to_phrase += "Fifteen thousand "; break;
-                case 16: number_to_phrase += "Sixteen thousand "; break; 
+                case 16: number_to_phrase += "Sixteen thousand "; break;
             }
 
             int hundreds = (int)number % 1000 / 100;
@@ -217,7 +217,7 @@ namespace Web_Application_Activity.Controllers
                 case 7: number_to_phrase += "seven hundred "; break;
                 case 8: number_to_phrase += "eight hundred "; break;
                 case 9: number_to_phrase += "nine hundred "; break;
-             
+
             }
 
             int tens = (int)number % 100 / 10;
@@ -225,22 +225,22 @@ namespace Web_Application_Activity.Controllers
             switch (tens)
             {
                 case 1:
-                {
-                    switch (ones)
                     {
-                        case 0: number_to_phrase += "ten "; break;
-                        case 1: number_to_phrase += "eleven "; break;
-                        case 2: number_to_phrase += "twelve "; break;
-                        case 3: number_to_phrase += "thirteen "; break;
-                        case 4: number_to_phrase += "fourteen "; break;
-                        case 5: number_to_phrase += "fifteen "; break;
-                        case 6: number_to_phrase += "sixteen "; break;
-                        case 7: number_to_phrase += "seventeen "; break;
-                        case 8: number_to_phrase += "eighteen "; break;
-                        case 9: number_to_phrase += "nineteen "; break;
+                        switch (ones)
+                        {
+                            case 0: number_to_phrase += "ten "; break;
+                            case 1: number_to_phrase += "eleven "; break;
+                            case 2: number_to_phrase += "twelve "; break;
+                            case 3: number_to_phrase += "thirteen "; break;
+                            case 4: number_to_phrase += "fourteen "; break;
+                            case 5: number_to_phrase += "fifteen "; break;
+                            case 6: number_to_phrase += "sixteen "; break;
+                            case 7: number_to_phrase += "seventeen "; break;
+                            case 8: number_to_phrase += "eighteen "; break;
+                            case 9: number_to_phrase += "nineteen "; break;
+                        }
+                        break;
                     }
-                    break;
-                }
                 case 2: number_to_phrase += "twenty "; break;
                 case 3: number_to_phrase += "thirty "; break;
                 case 4: number_to_phrase += "forty "; break;
@@ -273,43 +273,43 @@ namespace Web_Application_Activity.Controllers
             switch (tenths)
             {
                 case 0:
-                {
-                    switch (hundreths)
                     {
-                        case 1: number_to_phrase += "and one cent."; break;
-                        case 2: number_to_phrase += "and two cents."; break;
-                        case 3: number_to_phrase += "and three cents."; break;
-                        case 4: number_to_phrase += "and four cents."; break;
-                        case 5: number_to_phrase += "and five cents."; break;
-                        case 6: number_to_phrase += "and six cents."; break;
-                        case 7: number_to_phrase += "and seven cents."; break;
-                        case 8: number_to_phrase += "and eight cents."; break;
-                        case 9: number_to_phrase += "and nine cents."; break;
+                        switch (hundreths)
+                        {
+                            case 1: number_to_phrase += "and one cent."; break;
+                            case 2: number_to_phrase += "and two cents."; break;
+                            case 3: number_to_phrase += "and three cents."; break;
+                            case 4: number_to_phrase += "and four cents."; break;
+                            case 5: number_to_phrase += "and five cents."; break;
+                            case 6: number_to_phrase += "and six cents."; break;
+                            case 7: number_to_phrase += "and seven cents."; break;
+                            case 8: number_to_phrase += "and eight cents."; break;
+                            case 9: number_to_phrase += "and nine cents."; break;
+                        }
+                        break;
                     }
-                    break;
-                }
                 case 1:
-                {
-                    switch (hundreths)
                     {
-                        case 0: number_to_phrase += "and ten cents."; break;
-                        case 1: number_to_phrase += "and eleven cents."; break;
-                        case 2: number_to_phrase += "and twelve cents."; break;
-                        case 3: number_to_phrase += "and thirteen cents."; break;
-                        case 4: number_to_phrase += "and fourteen cents."; break;
-                        case 5: number_to_phrase += "and fifteen cents."; break;
-                        case 6: number_to_phrase += "and sixteen cents."; break;
-                        case 7: number_to_phrase += "and seventeen cents."; break;
-                        case 8: number_to_phrase += "and eighteen cents."; break;
-                        case 9: number_to_phrase += "and nineteen cents."; break;
+                        switch (hundreths)
+                        {
+                            case 0: number_to_phrase += "and ten cents."; break;
+                            case 1: number_to_phrase += "and eleven cents."; break;
+                            case 2: number_to_phrase += "and twelve cents."; break;
+                            case 3: number_to_phrase += "and thirteen cents."; break;
+                            case 4: number_to_phrase += "and fourteen cents."; break;
+                            case 5: number_to_phrase += "and fifteen cents."; break;
+                            case 6: number_to_phrase += "and sixteen cents."; break;
+                            case 7: number_to_phrase += "and seventeen cents."; break;
+                            case 8: number_to_phrase += "and eighteen cents."; break;
+                            case 9: number_to_phrase += "and nineteen cents."; break;
+                        }
+                        break;
                     }
-                    break;
-                }
                 case 2: number_to_phrase += "and twenty "; break;
                 case 3: number_to_phrase += "and thirty "; break;
-                case 4: number_to_phrase += "and forty " ; break;
-                case 5: number_to_phrase += "and fifty " ; break;
-                case 6: number_to_phrase += "and sixty " ; break;
+                case 4: number_to_phrase += "and forty "; break;
+                case 5: number_to_phrase += "and fifty "; break;
+                case 6: number_to_phrase += "and sixty "; break;
                 case 7: number_to_phrase += "and seventy "; break;
                 case 8: number_to_phrase += "and eighty "; break;
                 case 9: number_to_phrase += "and ninety "; break;
