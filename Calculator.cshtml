@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<h2>Calculator</h2>
+
+Input first number:
+<input type="number" id="firstnum" />
+<br />
+Input second number:
+<input type="number" id="secondnum" />
+<br />
+Operation:
+<select id="operations">
+    <option selected disabled>Select Operation</option>
+    <option value="1">+ Addition</option>
+    <option value="2">- Subtraction</option>
+    <option value="3">* Multiplication</option>
+    <option value="4">/ Division</option>
+</select>
+<br />
+<br />
+<input type="button" id="computebutton" value="Calculate" />
+<br />
+<br />
+Answer:
+<h1 id="answer"></h1>
+
+<script src="~/Scripts/jquerylatest/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/myscripts/calculator.js"></script>
