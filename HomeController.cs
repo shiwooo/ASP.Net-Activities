@@ -26,12 +26,21 @@ namespace Web_Application_Activity.Controllers
 
             return View();
         }
+
+        public ActionResult CustomerBill()
+        {
+            ViewBag.Message = "Customer Bill Calculator";
+
+            return View();
+        }
+
         public ActionResult StudentAccountingSystem()
         {
             ViewBag.Message = "Student Accoungting System page.";
 
             return View();
-        }
+        }  
+   
         public ActionResult StudentEntry()
         {
             var student_data = new List<object>();
@@ -341,6 +350,34 @@ namespace Web_Application_Activity.Controllers
                 phrase = number_to_phrase
             });
             return Json(assessment_data, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Calculator()
+        {
+            return View();
+        }
+
+        public ActionResult CalculatorOperation()
+        {
+            var calculation_data = new List<object>();
+            var first_num = Convert.ToDouble(Request["frstNum"]);
+            var second_num = Convert.ToDouble(Request["scndNum"]);
+            var num_operation = Convert.ToInt32(Request["op"]);
+            double answer = 0;
+
+            switch (num_operation)
+            {
+                case 1: answer = first_num + second_num; break;
+                case 2: answer = first_num - second_num; break;
+                case 3: answer = first_num * second_num; break;
+                case 4: answer = first_num / second_num; break;
+            }
+        
+            calculation_data.Add(new
+            {
+                final_answer = answer
+            });
+            return Json(calculation_data, JsonRequestBehavior.AllowGet);
         }
     }
 }
