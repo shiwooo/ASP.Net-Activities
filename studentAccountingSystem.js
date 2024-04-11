@@ -14,6 +14,11 @@ $(document).ready(function () {
             return
         }
 
+        if (IDNumber < 0) {
+            alert("Please enter non-negative value.");
+            return;
+        }
+
         $.post('../Home/StudentEntry', {
             crsCode: courseCode,
             subjCount: subjectCount,
@@ -36,6 +41,7 @@ $(document).ready(function () {
             $("#semifinal-payment").text(data[0].semi_final_payment.toFixed(2))
             $("#final-payment").text(data[0].final_payment.toFixed(2))
             $("#mode-of-payment").text(modeOfPayment)
+
         });
     });
 
@@ -49,6 +55,11 @@ $(document).ready(function () {
 
         if (!amountTendered) {
             alert("Please enter an amount.")
+            return;
+        }
+
+        if (amountTendered < 0) {
+            alert("Please enter non-negative value.");
             return;
         }
 
