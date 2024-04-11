@@ -122,14 +122,9 @@ namespace Web_Application_Activity.Controllers
             double total_tuition = unit_sum * tuition_per_unit;
             double overall_fee = total_tuition + reg_fee + misc_fee + lab_fee;
             double prelim = overall_fee * .53;
-            double midterm = overall_fee * .64;
-            double semi_final = overall_fee * .75;
-            double final = overall_fee;
-
-            /*ALTERNATIVE FORMULA IF LAHI ANG PASABOT*/
-            /*double midterm = overall_fee * .64 - prelim;
-            double semi_final = (overall_fee * .75) - (midterm + prelim);
-            double final = overall_fee - (prelim + midterm + semi_final);*/
+            double midterm = overall_fee * .64 - prelim;
+            double semi_final = overall_fee * .75 - (midterm + prelim);
+            double final = overall_fee - (prelim + midterm + semi_final);
 
             student_data.Add(new
             {
@@ -205,13 +200,6 @@ namespace Web_Application_Activity.Controllers
                 case 7: number_to_phrase += "Seven thousand "; break;
                 case 8: number_to_phrase += "Eight thousand "; break;
                 case 9: number_to_phrase += "Nine thousand "; break;
-                case 10: number_to_phrase += "Ten thousand "; break;
-                case 11: number_to_phrase += "Eleven thousand "; break;
-                case 12: number_to_phrase += "Twelve thousand "; break;
-                case 13: number_to_phrase += "Thirteen thousand "; break;
-                case 14: number_to_phrase += "Fourteen thousand "; break;
-                case 15: number_to_phrase += "Fifteen thousand "; break;
-                case 16: number_to_phrase += "Sixteen thousand "; break;
             }
 
             int hundreds = (int)number % 1000 / 100;
@@ -350,34 +338,6 @@ namespace Web_Application_Activity.Controllers
                 phrase = number_to_phrase
             });
             return Json(assessment_data, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Calculator()
-        {
-            return View();
-        }
-
-        public ActionResult CalculatorOperation()
-        {
-            var calculation_data = new List<object>();
-            var first_num = Convert.ToDouble(Request["frstNum"]);
-            var second_num = Convert.ToDouble(Request["scndNum"]);
-            var num_operation = Convert.ToInt32(Request["op"]);
-            double answer = 0;
-
-            switch (num_operation)
-            {
-                case 1: answer = first_num + second_num; break;
-                case 2: answer = first_num - second_num; break;
-                case 3: answer = first_num * second_num; break;
-                case 4: answer = first_num / second_num; break;
-            }
-        
-            calculation_data.Add(new
-            {
-                final_answer = answer
-            });
-            return Json(calculation_data, JsonRequestBehavior.AllowGet);
         }
     }
 }
