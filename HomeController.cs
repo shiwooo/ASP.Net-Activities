@@ -39,8 +39,8 @@ namespace Web_Application_Activity.Controllers
             ViewBag.Message = "Student Accoungting System page.";
 
             return View();
-        }  
-   
+        }
+
         public ActionResult StudentEntry()
         {
             var student_data = new List<object>();
