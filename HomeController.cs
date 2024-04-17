@@ -339,5 +339,70 @@ namespace Web_Application_Activity.Controllers
             });
             return Json(assessment_data, JsonRequestBehavior.AllowGet);
         }
+        
+        public ActionResult FLAMES()
+        {
+            return View();
+        }
+
+        public ActionResult IdentifyFLAMES()
+        {
+            var person_data = new List<object>();
+            var yourName = Request["yourName"].ToLower().Replace(" ", "");
+            var crushName = Request["crushName"].ToLower().Replace(" ", "");
+            int occurrenceCount = 0;
+
+            foreach (char ch in crushName)
+            {
+                if (yourName.Contains(ch))
+                {
+                    occurrenceCount += 1;
+                }
+            }
+
+            foreach (char ch in yourName)
+            {
+                if (crushName.Contains(ch))
+                {
+                    occurrenceCount += 1;
+                }
+            }
+
+            var flames = "FLAMES";
+            int index = occurrenceCount % flames.Length -1; 
+            if (index < 0)
+            {
+                index += flames.Length;
+            }
+            char result = flames[index];
+            string final = "";
+            switch (result)
+            {
+                case 'F':
+                    final = "Friends";
+                    break;
+                case 'L':
+                    final = "Lovers";
+                    break;
+                case 'A':
+                    final = "Admirers";
+                    break;
+                case 'M':
+                    final = "Marriage";
+                    break;
+                case 'E':
+                    final = "Enemies";
+                    break;
+                case 'S':
+                    final = "Secret Lovers";
+                    break;
+            }
+
+            person_data.Add(new
+            {
+                flamesresult = final
+            });
+            return Json(person_data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
