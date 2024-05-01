@@ -404,5 +404,10 @@ namespace Web_Application_Activity.Controllers
             });
             return Json(person_data, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult ProductEntryForm()
+        {
+            return View();
+        }
+    }
     }
 }
